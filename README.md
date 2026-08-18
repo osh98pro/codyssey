@@ -317,8 +317,7 @@ $Docker 볼륨 영속성 검증
 사용자 정보 설정
 ```
 tkdgjs01196630@c5r6s7 codyssey % git config user.name "osh98pro"      
-tkdgjs01196630@c5r6s7 codyssey % git config user.email "osh98pro@gmail.com
-"
+tkdgjs01196630@c5r6s7 codyssey % git config user.email "osh98pro@gmail.com"
 tkdgjs01196630@c5r6s7 codyssey % git config --list
 credential.helper=osxkeychain
 core.repositoryformatversion=0

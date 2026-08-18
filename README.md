@@ -18,11 +18,13 @@
 
 ## 3) 수행 로그(발췌)
 ### 터미널 기본조작 및 폴더 구성
-$ pwd
+- pwd
+```
 user@c5r2s4 ~ % pwd
 /Users/user
-
-$ ls -al
+```
+- ls -al
+```
 user@c5r2s4 ~ % ls -al
 total 8
 drwxr-x---+ 18 user  user   576 Aug 11 15:01 .
@@ -43,59 +45,68 @@ drwx------   4 user  user   160 Aug 11 15:01 OrbStack
 drwx------+  4 user  user   128 Aug 11 14:33 Pictures
 drwxr-xr-x+  4 user  user   128 Aug 11 14:33 Public
 -rw-r--r--   1 user  user     0 Aug 11 14:43 README.md
-
-$ cd
+```
+- cd
+```
 user@c5r2s4 ~ % cd codyssey 
 user@c5r2s4 codyssey % 
-
-$ mkdir
+```
+- mkdir
+```
 user@c5r2s4 ~ % mkdir codyssey
 user@c5r2s4 ~ % ls
 codyssey        Downloads        Music            Public
 Desktop         Library          OrbStack         README.md
 Documents       Movies           Pictures
-
-$ cp
+```
+- cp
+```
 user@c5r2s4 ~ % cp test.txt codyssey/
 user@c5r2s4 ~ % cd codyssey 
 user@c5r2s4 codyssey % ls
 test.txt
-
-$ mv
+```
+- mv
+```
 user@c5r2s4 ~ % mv codyssey mv_test         
 user@c5r2s4 ~ % ls
 Desktop         Library         mv_test         Public
 Documents       Movies          OrbStack        README.md
 Downloads       Music           Pictures
-
-$ rm
+```
+- rm
+```
 user@c5r2s4 ~ % rm -rf codyssey
 user@c5r2s4 ~ % ls
 Desktop         Library         OrbStack        README.md
 Documents       Movies          Pictures        test.txt
 Downloads       Music
-
-$ cat
+```
+- cat
+```
 user@c5r2s4 ~ % cat test.txt 
 hello world
-
-$ touch
+```
+- touch
+```
 user@c5r2s4 ~ % touch touch_test.txt
 user@c5r2s4 ~ % cat touch_test.txt 
 user@c5r2s4 ~ % 
-
+```
 ###권한 변경 실습
-$ chmod
+- chmod
 
 변환 전
+```
 user@c5r2s4 codyssey % ls -al
 total 0
 drwxr-xr-x   4 user  user   128 Aug 11 15:27 .
 drwxr-x---+ 21 user  user   672 Aug 11 15:27 ..
 drwxr-xr-x   2 user  user    64 Aug 11 15:27 ch_dir
 -rw-r--r--   1 user  user     0 Aug 11 15:25 touch_test.txt
-
+```
 변환 후
+```
 user@c5r2s4 codyssey % chmod 777 touch_test.txt 
 user@c5r2s4 codyssey % chmod 700 ch_dir 
 user@c5r2s4 codyssey % ls -al
@@ -104,13 +115,15 @@ drwxr-xr-x   4 user  user   128 Aug 11 15:27 .
 drwxr-x---+ 21 user  user   672 Aug 11 15:27 ..
 drwx------   2 user  user    64 Aug 11 15:27 ch_dir
 -rwxrwxrwx   1 user  user     0 Aug 11 15:25 touch_test.txt
-
+```
 ### Docker
-$ Docker 버전확인
+- Docker 버전확인
+```
 user@c5r2s4 codyssey % docker --version
 Docker version 28.5.2, build ecc6942
-
-$ Docker 데몬 동작 여부 확인
+```
+- Docker 데몬 동작 여부 확인
+```
 user@c5r2s4 codyssey % docker info
 Client:
  Version:    28.5.2
@@ -208,26 +221,31 @@ Server:
     Base: fd07:b51a:cc66:d000::/56, Size: 64
 
 WARNING: DOCKER_INSECURE_NO_IPTABLES_RAW is set
-
-$ Docker 이미지 목록 확인
+```
+- Docker 이미지 목록 확인
+```
 user@c5r2s4 codyssey % docker images
 REPOSITORY   TAG        IMAGE ID    CREATED    SIZE
-
-$ 컨테이너 실행/중지/목록 확인
+```
+- 컨테이너 실행/중지/목록 확인
+```
 user@c5r2s4 codyssey % docker ps -a
 CONTAINER ID   IMAGE     COMMAND    CREATED    STATUS    PORTS    NAMES
-
-$ Docker 로그 확인
+```
+- Docker 로그 확인
+```
 user@c5r2s4 codyssey % docker logs ubuntu
 root@107a748f8bf5:/app# exit
 exit
-
-$ Docker 리소스 확인
+```
+- Docker 리소스 확인
+```
 user@c5r2s4 codyssey % docker stats
 CONTAINER ID   NAME     CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O     PIDS 
 de8e8c1c761d   html     0.00%     6.078MiB / 15.67GiB   0.04%     1.35kB / 318B   8MB / 4.1kB   7 
-
-$ hello-world실행
+```
+- hello-world실행
+```
 user@c5r2s4 codyssey % docker run hello-world     
 
 Hello from Docker!
@@ -250,13 +268,14 @@ Share images, automate workflows, and more with a free Docker ID:
 
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
-
-$ ubuntu컨테이너 실행 후 간단 명령어 수행기록
+```
+- ubuntu컨테이너 실행 후 간단 명령어 수행기록
+```
 root@107a748f8bf5:/app# ls
 root@107a748f8bf5:/app# echo "hello world"
 hello world
-
-$ 컨테이너 종료/유지(attach/exec)의 차이
+```
+- 컨테이너 종료/유지(attach/exec)의 차이
 - attach : 
 컨테이너를 실행할 때 생성된 메인 프로세스(PID 1)의 표준 입출력에 직접 연결합니다.
 컨테이너 화면을 그대로 터미널로 가져오는 방식이므로, 작업 완료 후 exit를 입력하여 빠져나오면 메인 프로세스가 종료되면서 컨테이너 자체가 중지됨

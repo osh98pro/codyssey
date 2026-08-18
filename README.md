@@ -287,13 +287,14 @@ hello world
  메인 프로세스와 독립적인 공간을 사용하므로, 내부 작업 종료 후 exit를 입력해 터미널을 빠져나와도 보조 프로세스만 종료될 뿐 컨테이너   는 계속 실행 상태를 유지한다.
 
 - 커스텀 이미지(Dockerfile)
-
+```
 FROM nginx:alpine --웹서버 베이스
 
 LABEL description="nginx html Container" \
       environment="development" ---해당 이미지 메타데이터 설정
 COPY app/ /usr/share/nginx/html --필요한 파일 복사
-
+```
+```
 user@c5r2s4 codyssey % docker build -t my_html .
 user@c6r3s8 codyssey % docker run -d -p 8080:80 --name myweb myweb
 user@c5r2s4 codyssey % curl localhost:8080
@@ -305,11 +306,30 @@ user@c5r2s4 codyssey % curl localhost:8080
 <body>
 </body>
 </html>%
-
+```
 - 결과이미지
 ![screenshot](./screenshot.png)
 
-- Docker 볼륨 영속성 검증
+- Docker 바인드 마운트
+```
+user@c5r6s7 codyssey % docker run -dit -v /Users/user/codyssey/app/:/app --name ubuntu ubuntu
+76bda5812b9f1cbd0bea0b49942b0900ab56a2f1a3c0b3b437cd64d350b1c7e7
+```
+컨테이너 마운트 정보 확인
+```
+docker inspect ubuntu
+```
+```
+"Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/Users/user/codyssey/app",
+                "Destination": "/app",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+```
 - Docker 
 
 ### Git 설정 및 GitHub/VSCode 연동

@@ -12,6 +12,7 @@
 ├── Dockerfile              # Nginx:Alpine 기반 기본 컨테이너 예제
 ├── Dockerfile_ubuntu       # Ubuntu 기반 이미지 예제
 └── README.md               # 프로젝트 개요 및 수행 내역
+```
 ## 2) 실행 환경
 - OS: macOS Sequoia 15.7.4
 - Shell: bash

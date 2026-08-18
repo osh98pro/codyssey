@@ -94,7 +94,7 @@ user@c5r2s4 ~ % cat touch_test.txt
 user@c5r2s4 ~ % 
 ```
 
-###권한 변경 실습
+### 권한 변경 실습
 - chmod
 
 변환 전

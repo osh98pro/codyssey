@@ -93,6 +93,7 @@ user@c5r2s4 ~ % touch touch_test.txt
 user@c5r2s4 ~ % cat touch_test.txt 
 user@c5r2s4 ~ % 
 ```
+
 ###권한 변경 실습
 - chmod
 
@@ -276,15 +277,17 @@ root@107a748f8bf5:/app# echo "hello world"
 hello world
 ```
 - 컨테이너 종료/유지(attach/exec)의 차이
-- attach : 
-컨테이너를 실행할 때 생성된 메인 프로세스(PID 1)의 표준 입출력에 직접 연결합니다.
-컨테이너 화면을 그대로 터미널로 가져오는 방식이므로, 작업 완료 후 exit를 입력하여 빠져나오면 메인 프로세스가 종료되면서 컨테이너 자체가 중지됨
+ - attach : 
+ 컨테이너를 실행할 때 생성된 메인 프로세스(PID 1)의 표준 입출력에 직접 연결합니다.
+ 컨테이너 화면을 그대로 터미널로 가져오는 방식이므로, 작업 완료 후 exit를 입력하여 빠져나오면 메인 프로세스가 종료되면서 컨테이너
+ 자체가 중지됨
 
-- exec :
-이미 실행 중인 컨테이너 내부에 별도의 보조 프로세스를 새로 띄워 진입합니다.
-메인 프로세스와 독립적인 공간을 사용하므로, 내부 작업 종료 후 exit를 입력해 터미널을 빠져나와도 보조 프로세스만 종료될 뿐 컨테이너는 계속 실행 상태를 유지한다.
+ - exec :
+ 이미 실행 중인 컨테이너 내부에 별도의 보조 프로세스를 새로 띄워 진입합니다.
+ 메인 프로세스와 독립적인 공간을 사용하므로, 내부 작업 종료 후 exit를 입력해 터미널을 빠져나와도 보조 프로세스만 종료될 뿐 컨테이너   는 계속 실행 상태를 유지한다.
 
-$ 커스텀 이미지(Dockerfile)
+- 커스텀 이미지(Dockerfile)
+
 FROM nginx:alpine --웹서버 베이스
 
 LABEL description="nginx html Container" \
@@ -303,10 +306,10 @@ user@c5r2s4 codyssey % curl localhost:8080
 </body>
 </html>%
 
-$ 결과이미지
+- 결과이미지
 ![screenshot](./screenshot.png)
 
-$ Docker 볼륨 영속성 검증
+- Docker 볼륨 영속성 검증
 - Docker 
 
 ### Git 설정 및 GitHub/VSCode 연동

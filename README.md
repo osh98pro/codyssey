@@ -372,11 +372,30 @@ modified helloworld
 생성 및 연결
 ```
 user@c5r6s7 ~ % docker volume create my_data
-user@c5r6s7 ~ % docker run -dit -v my_data:/app --name ubuntu_vol ubuntu
+user@c5r6s7 ~ % docker run -it -v my_data:/app --name ubuntu_vol ubuntu
 ```
 컨테이너 내부에서 파일 생성
 ```
 root@dc4dd90d12e8:/app# echo "vol test" >> test.txt
+```
+컨테이너 삭제 및 재생성
+```
+##삭제
+user@c5r6s7 codyssey % docker ps -a        
+CONTAINER ID   IMAGE     COMMAND             CREATED             STATUS                        PORTS     NAMES
+e748e6644f67   ubuntu    "/bin/bash"         2 minutes ago       Exited (137) 17 seconds ago             ubuntu_vol
+08b0a2a94175   ubuntu    "--name ubuntu_2"   About an hour ago   Created                                 quirky_cray
+f4b2bb103a0b   ubuntu    "/bin/bash"         2 hours ago         Exited (137) 2 hours ago                ubuntu
+user@c5r6s7 codyssey % docker rm ubuntu_vol
+ubuntu_vol
+user@c5r6s7 codyssey % docker ps -a
+CONTAINER ID   IMAGE     COMMAND             CREATED             STATUS                     PORTS     NAMES
+08b0a2a94175   ubuntu    "--name ubuntu_2"   About an hour ago   Created                              quirky_cray
+f4b2bb103a0b   ubuntu    "/bin/bash"         2 hours ago         Exited (137) 2 hours ago             ubuntu
+
+##재생성
+tkdgjs01196630@c5r6s7 codyssey % docker run -dit --name ubuntu_2 -v my_data:/app ubuntu
+ba85ea9cf69d6e02a3d9b3eca5103209f345fe500c8914153a2532a739cb8877
 ```
 컨테이너 영속성 검증
 ```

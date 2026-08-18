@@ -312,8 +312,7 @@ user@c5r2s4 codyssey % curl localhost:8080
 
 - Docker 바인드 마운트
 ```
-user@c5r6s7 codyssey % docker run -dit -v /Users/user/codyssey/app/:/app --name ubuntu ubuntu
-76bda5812b9f1cbd0bea0b49942b0900ab56a2f1a3c0b3b437cd64d350b1c7e7
+user@c5r6s7 codyssey % docker run -dit -v /Users/user/:/app --name ubuntu ubuntu
 ```
 컨테이너 마운트 정보 확인
 ```
@@ -330,8 +329,36 @@ docker inspect ubuntu
                 "Propagation": "rprivate"
             }
 ```
-- Docker 
+- 검증
+```
+user@c5r6s7 codyssey % docker exec -i -t ubuntu
+root@f4b2bb103a0b:/app# cat helloworld 
+hello world!
+```
 
+호스트에서 hello world!문구에 modified helloworld를 추가
+```
+root@f4b2bb103a0b:/app# cat helloworld  
+hello world!
+modified helloworld
+```
+
+- Docker 볼륨
+생성 및 연결
+```
+tkdgjs01196630@c5r6s7 ~ % docker volume create my_data
+tkdgjs01196630@c5r6s7 ~ % docker run -dit -v my_data:/app --name ubuntu_vol ubuntu
+```
+컨테이너 내부에서 파일 생성
+```
+root@dc4dd90d12e8:/app# echo "vol test" >> test.txt
+```
+컨테이너 영속성 검증
+```
+tkdgjs01196630@c5r6s7 ~ % docker exec -it ubuntu_2 bash
+root@73ac9291043a:/app# cat test.txt 
+vol test
+```
 ### Git 설정 및 GitHub/VSCode 연동
 - 사용자 정보 설정
 ```

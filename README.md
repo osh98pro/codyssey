@@ -1,11 +1,25 @@
-## 1) 실행 환경
+#내 컴퓨터에 개발장ㅇ '작업실'꾸미기
+## 1) 프로젝트 개요
+------
+터미널,파일권한,Docker, Git/GitHub를 사용해 재현 가능한 개발환경을 구축하고 각 단계의 명령과 검증결과를 문서화하는 프로젝트
+### 1.1) 프로젝트 구조
+```
+.
+├── app/                    # 웹 컨테이너에서 제공할 정적 페이지
+│   └── index.html          # 웹 컨테이너의 정적 페이지
+├── screenshot.png          # local:8080 연결 사진
+├── vscode.png              # vscode github연동 사진
+├── Dockerfile              # Nginx:Alpine 기반 기본 컨테이너 예제
+├── Dockerfile_ubuntu       # Ubuntu 기반 이미지 예제
+└── README.md               # 프로젝트 개요 및 수행 내역
+## 2) 실행 환경
 - OS: macOS Sequoia 15.7.4
 - Shell: bash
 - Docker 엔진: OrbStack
 - Docker: version 28.5.2
 - Git: version 2.53.0
 
-## 2) 수행 체크리스트
+## 3) 수행 체크리스트
 -  터미널 기본 조작 및 폴더 구성
 -  권한 변경 실습
 -  Docker 설치/점검
@@ -16,7 +30,7 @@
 -  볼륨 영속성
 -  Git 설정 + VSCode GitHub 연동
 
-## 3) 수행 로그(발췌)
+## 4) 수행 로그(발췌)
 ### 터미널 기본조작 및 폴더 구성
 - pwd
 ```
@@ -117,6 +131,8 @@ drwxr-x---+ 21 user  user   672 Aug 11 15:27 ..
 drwx------   2 user  user    64 Aug 11 15:27 ch_dir
 -rwxrwxrwx   1 user  user     0 Aug 11 15:25 touch_test.txt
 ```
+파일은 user, group, other의 권한을 모두 읽고 쓰고 실행을 할 수있게 바꿨으며 파일은 사용자빼고 나머지인 group, other가 읽고 쓰고 접근을 못하도록 권한을 설정하였다.
+
 ### Docker
 - Docker 버전확인
 ```
@@ -223,10 +239,18 @@ Server:
 
 WARNING: DOCKER_INSECURE_NO_IPTABLES_RAW is set
 ```
-- Docker 이미지 목록 확인
+- Docker 이미지 목록 확인 및 삭제
 ```
-user@c5r2s4 codyssey % docker images
-REPOSITORY   TAG        IMAGE ID    CREATED    SIZE
+user@c5r6s7 codyssey % docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+html         latest    22259ae46bc5   3 hours ago   62.4MB
+ubuntu       latest    3221e95fa79d   2 weeks ago   78.2MB
+user@c5r6s7 codyssey % docker rmi html
+Untagged: html:latest
+Deleted: sha256:22259ae46bc542726253b7f4d143cf021742eab8ea2022ed24fd67c7879e9d90
+user@c5r6s7 codyssey % docker images  
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+ubuntu       latest    3221e95fa79d   2 weeks ago   78.2MB
 ```
 - 컨테이너 실행/중지/목록 확인
 ```
@@ -393,20 +417,20 @@ user@c5r6s7 codyssey % git branch --list
 - vscode 연동 증거
 ![vscode](./vscode.png)
 
-## 트러블 슈팅
+## 5)트러블 슈팅
 우분투에서 docker run 명령어 사용시 -t 옵션을 안쓰면 백그라운드 자동종료가 된다.
 이를 방지하기 위해 -t 옵션을 사용하여 터미널을 연결시켜줘야 자동종료가 안된다.
 ```
-user@c5r6s7 codyssey % docker run -d ubuntu
-user@c5r6s7 codyssey % docker start vigorous_chebyshev 
+tkdgjs01196630@c5r6s7 codyssey % docker run -d ubuntu
+tkdgjs01196630@c5r6s7 codyssey % docker start vigorous_chebyshev 
 vigorous_chebyshev
 ```
 우분투에서 docker 명령어 사용시 -i옵션을 안쓰면 터미널까지 들어가더라도 어떤 명령어든 상호작용이 안도니다
 이를 방지하기 위해 -i 옵션을 사용하여 터미널을 연결시켜줘야한다.
 ```
-user@c5r6s7 codyssey % docker run -dt --name ubuntu_2 ubuntu
+kdgjs01196630@c5r6s7 codyssey % docker run -dt --name ubuntu_2 ubuntu
 3e8fdd162159ef191f65cf04649b59466f92f4c8e8821a27d2ae6abb81a8edfa
-user@c5r6s7 codyssey % docker exec -it ubuntu_2 bash
+tkdgjs01196630@c5r6s7 codyssey % docker exec -it ubuntu_2 bash
 root@3e8fdd162159:/# exit
 exit
 터미널 종료가 안되어 강제종료함

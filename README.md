@@ -312,3 +312,37 @@ $ 결과이미지
 
 $Docker 볼륨 영속성 검증
 -Docker 
+
+### Git 설정 및 GitHub/VSCode 연동
+사용자 정보 설정
+```
+tkdgjs01196630@c5r6s7 codyssey % git config user.name "osh98pro"      
+tkdgjs01196630@c5r6s7 codyssey % git config user.email "osh98pro@gmail.com
+"
+tkdgjs01196630@c5r6s7 codyssey % git config --list
+credential.helper=osxkeychain
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+core.ignorecase=true
+core.precomposeunicode=true
+remote.origin.url=https://github.com/osh98pro/codyssey.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.master.remote=origin
+branch.master.merge=refs/heads/master
+user.name=osh98pro
+user.email=osh98pro@gmail.com
+```
+기본 브랜치 설정
+```
+tkdgjs01196630@c5r6s7 codyssey % git config --global init.defaultBranch ma
+in
+tkdgjs01196630@c5r6s7 codyssey % git branch -m master main
+tkdgjs01196630@c5r6s7 codyssey % git push -u origin main
+tkdgjs01196630@c5r6s7 codyssey % git push origin --delete master
+To https://github.com/osh98pro/codyssey.git
+ - [deleted]         master
+tkdgjs01196630@c5r6s7 codyssey % git branch --list
+* main
+```

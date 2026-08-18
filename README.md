@@ -456,10 +456,11 @@ vigorous_chebyshev
 우분투에서 docker 명령어 사용시 -i옵션을 안쓰면 터미널까지 들어가더라도 어떤 명령어든 상호작용이 안도니다
 이를 방지하기 위해 -i 옵션을 사용하여 터미널을 연결시켜줘야한다.
 ```
-kdgjs01196630@c5r6s7 codyssey % docker run -dt --name ubuntu_2 ubuntu
-3e8fdd162159ef191f65cf04649b59466f92f4c8e8821a27d2ae6abb81a8edfa
-tkdgjs01196630@c5r6s7 codyssey % docker exec -it ubuntu_2 bash
-root@3e8fdd162159:/# exit
-exit
-터미널 종료가 안되어 강제종료함
+tkdgjs01196630@c5r6s7 codyssey % docker run -t --name ubuntu_0 ubuntu 
+root@c7118ca1eaf0:/# ls
+^C^C
+root@c7118ca1eaf0:/# ^C^C
+root@c7118ca1eaf0:/# pwd
+^C
+터미널이 아무런 상호작용을 안하여 강제 종료
 ```

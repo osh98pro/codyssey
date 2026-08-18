@@ -1,6 +1,6 @@
 #내 컴퓨터에 개발장ㅇ '작업실'꾸미기
 ## 1) 프로젝트 개요
-------
+
 터미널,파일권한,Docker, Git/GitHub를 사용해 재현 가능한 개발환경을 구축하고 각 단계의 명령과 검증결과를 문서화하는 프로젝트
 ### 1.1) 프로젝트 구조
 ```
@@ -312,13 +312,21 @@ hello world
  메인 프로세스와 독립적인 공간을 사용하므로, 내부 작업 종료 후 exit를 입력해 터미널을 빠져나와도 보조 프로세스만 종료될 뿐 컨테이너   는 계속 실행 상태를 유지한다.
 
 - 커스텀 이미지(Dockerfile)
-```
-FROM nginx:alpine --웹서버 베이스
+베이스 이미지: nginx:alpine
+NGINX 웹 서버가 준비되어 있어 정적 콘텐츠를 바로 제공할 수 있다.
+Alpine Linux 기반이라 일반 NGINX 이미지보다 크기가 작다.
+COPY app/ /usr/share/nginx/html/
+프로젝트의 app/index.html을 NGINX 기본 콘텐츠 대신 복사해서 컨텐츠를 제공한다.
+EXPOSE 80
+컨테이너의 웹 서버가 80번 포트를 사용한다는 정보를 명시한다.
 
-LABEL description="nginx html Container" \
-      environment="development" ---해당 이미지 메타데이터 설정
-COPY app/ /usr/share/nginx/html --필요한 파일 복사
 ```
+FROM nginx:alpine
+
+COPY app/ /usr/share/nginx/html
+EXPOSE 80
+```
+이미지 생성 및 포트매핑
 ```
 user@c5r2s4 codyssey % docker build -t my_html .
 user@c6r3s8 codyssey % docker run -d -p 8080:80 --name myweb myweb

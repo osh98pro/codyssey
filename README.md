@@ -345,3 +345,5 @@ To https://github.com/osh98pro/codyssey.git
 tkdgjs01196630@c5r6s7 codyssey % git branch --list
 * main
 ```
+- vscode 연동 증거
+![vscode](./vscode.png)

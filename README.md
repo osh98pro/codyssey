@@ -341,7 +341,7 @@ user@c5r2s4 codyssey % curl localhost:8080
 </html>%
 ```
 - 결과이미지
-![screenshot](./screenshot.png)
+![screenshot](./pic/screenshot.png)
 
 - Docker 바인드 마운트
 ```
@@ -443,7 +443,7 @@ user@c5r6s7 codyssey % git branch --list
 * main
 ```
 - vscode 연동 증거
-![vscode](./vscode.png)
+![vscode](./pic/vscode.png)
 
 ## 5)트러블 슈팅
 우분투에서 docker run 명령어 사용시 -t 옵션을 안쓰면 백그라운드 자동종료가 된다.

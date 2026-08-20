@@ -7,8 +7,9 @@
 .
 ├── app/                    # 웹 컨테이너에서 제공할 정적 페이지
 │   └── index.html          # 웹 컨테이너의 정적 페이지
-├── screenshot.png          # local:8080 연결 사진
-├── vscode.png              # vscode github연동 사진
+├── pic/                    # 웹 컨테이너에서 제공할 정적 페이지
+│   ├── screenshot.png      # local:8080 연결 사진
+│   └── vscode.png          # vscode github연동 사진
 ├── Dockerfile              # Nginx:Alpine 기반 기본 컨테이너 예제
 ├── Dockerfile_ubuntu       # Ubuntu 기반 이미지 예제
 └── README.md               # 프로젝트 개요 및 수행 내역
